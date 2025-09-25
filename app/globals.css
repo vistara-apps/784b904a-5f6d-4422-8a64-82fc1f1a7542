@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* RemixPlay Theme - Music/Audio focused with vibrant gradients */
+  --color-bg: hsl(220 20% 15%);
+  --color-fg: hsl(0 0% 95%);
+  --color-accent: hsl(300 60% 60%);
+  --color-surface: hsl(220 20% 20%);
+  --color-text-primary: hsl(0 0% 95%);
+  --color-text-secondary: hsl(0 0% 80%);
+  
+  /* Additional music-themed colors */
+  --color-primary: hsl(220 70% 50%);
+  --color-secondary: hsl(300 60% 60%);
+  --color-success: hsl(142 76% 36%);
+  --color-warning: hsl(38 92% 50%);
+  --color-error: hsl(0 84% 60%);
+  
+  /* Gradients for audio visualization */
+  --gradient-primary: linear-gradient(135deg, hsl(220 70% 50%) 0%, hsl(300 60% 60%) 100%);
+  --gradient-surface: linear-gradient(135deg, hsl(220 20% 20%) 0%, hsl(220 25% 25%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(300 60% 60%) 0%, hsl(260 60% 60%) 100%);
+}
+
+/* CELO Theme */
+[data-theme="celo"] {
+  --color-bg: hsl(0 0% 0%);
+  --color-fg: hsl(0 0% 100%);
+  --color-accent: hsl(48 100% 67%);
+  --color-surface: hsl(0 0% 10%);
+  --color-text-primary: hsl(0 0% 100%);
+  --color-text-secondary: hsl(0 0% 80%);
+}
+
+/* SOLANA Theme */
+[data-theme="solana"] {
+  --color-bg: hsl(260 20% 15%);
+  --color-fg: hsl(0 0% 95%);
+  --color-accent: hsl(300 70% 60%);
+  --color-surface: hsl(260 20% 20%);
+  --color-text-primary: hsl(0 0% 95%);
+  --color-text-secondary: hsl(0 0% 80%);
+}
+
+/* BASE Theme */
+[data-theme="base"] {
+  --color-bg: hsl(220 30% 15%);
+  --color-fg: hsl(0 0% 95%);
+  --color-accent: hsl(220 100% 50%);
+  --color-surface: hsl(220 30% 20%);
+  --color-text-primary: hsl(0 0% 95%);
+  --color-text-secondary: hsl(0 0% 80%);
+}
+
+/* COINBASE Theme */
+[data-theme="coinbase"] {
+  --color-bg: hsl(220 40% 10%);
+  --color-fg: hsl(0 0% 95%);
+  --color-accent: hsl(220 100% 50%);
+  --color-surface: hsl(220 40% 15%);
+  --color-text-primary: hsl(0 0% 95%);
+  --color-text-secondary: hsl(0 0% 80%);
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    background: var(--color-bg);
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsla(300, 60%, 60%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(220, 70%, 50%, 0.1) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface backdrop-blur-sm border border-white/10 rounded-lg;
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 255, 255, 0.05) 100%);
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply glass-card text-text-primary px-6 py-3 rounded-lg font-medium hover:bg-opacity-80 transition-all duration-200;
+  }
+  
+  .audio-visualizer {
+    @apply relative overflow-hidden rounded-lg;
+    background: var(--gradient-primary);
+  }
+  
+  .waveform {
+    @apply h-16 w-full flex items-end justify-center space-x-1;
+  }
+  
+  .waveform-bar {
+    @apply bg-white/60 rounded-full transition-all duration-150;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+  
+  .remix-card {
+    @apply glass-card p-4 hover:bg-opacity-15 transition-all duration-200 cursor-pointer;
+  }
+  
+  .tool-button {
+    @apply glass-card p-3 rounded-lg hover:bg-opacity-80 transition-all duration-200 flex items-center justify-center;
+  }
+  
+  .asset-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+  }
+  
+  .border-gradient {
+    border-image: var(--gradient-primary) 1;
+  }
+}
+
+/* Audio visualization animations */
+@keyframes pulse {
+  0% { height: 0.5rem; }
+  100% { height: 2rem; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
