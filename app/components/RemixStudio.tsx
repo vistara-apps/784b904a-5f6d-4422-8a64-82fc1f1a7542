@@ -5,6 +5,7 @@ import { Play, Pause, Square, Save, Upload, Settings2, Volume2, Zap } from 'luci
 import { Asset, AudioEffect, RemixProject } from '@/lib/types';
 import { AUDIO_EFFECTS, BPM_RANGE } from '@/lib/constants';
 import { AssetPicker } from './AssetPicker';
+import { PaymentDemo } from './PaymentDemo';
 import { clamp } from '@/lib/utils';
 
 interface RemixStudioProps {
@@ -201,6 +202,9 @@ export function RemixStudio({ onSave, className = '' }: RemixStudioProps) {
           </div>
         </div>
       </div>
+
+      {/* Payment Demo */}
+      <PaymentDemo />
 
       {/* Tools */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
