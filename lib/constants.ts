@@ -1,3 +1,5 @@
+import { AudioEffect } from './types';
+
 export const AUDIO_FORMATS = [
   'audio/mpeg',
   'audio/wav',
@@ -51,41 +53,41 @@ export const SAMPLE_ASSETS = [
   },
 ];
 
-export const AUDIO_EFFECTS = [
+export const AUDIO_EFFECTS: AudioEffect[] = [
   {
     id: 'reverb',
     name: 'Reverb',
-    type: 'reverb' as const,
+    type: 'reverb',
     params: { roomSize: 0.5, damping: 0.5, wetness: 0.3 },
   },
   {
     id: 'delay',
     name: 'Delay',
-    type: 'delay' as const,
+    type: 'delay',
     params: { time: 0.25, feedback: 0.3, wetness: 0.2 },
   },
   {
     id: 'distortion',
     name: 'Distortion',
-    type: 'distortion' as const,
+    type: 'distortion',
     params: { amount: 0.5, tone: 0.5 },
   },
   {
     id: 'filter',
     name: 'Filter',
-    type: 'filter' as const,
-    params: { frequency: 1000, resonance: 1, type: 0 }, // 0=lowpass, 1=highpass, 2=bandpass
+    type: 'filter',
+    params: { frequency: 1000, resonance: 1, filterType: 0 }, // 0=lowpass, 1=highpass, 2=bandpass
   },
   {
     id: 'pitch',
     name: 'Pitch Shift',
-    type: 'pitch' as const,
+    type: 'pitch',
     params: { shift: 0 }, // semitones
   },
   {
     id: 'tempo',
     name: 'Tempo',
-    type: 'tempo' as const,
+    type: 'tempo',
     params: { rate: 1.0 }, // playback rate
   },
 ];

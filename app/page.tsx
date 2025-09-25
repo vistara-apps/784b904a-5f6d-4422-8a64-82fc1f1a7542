@@ -5,7 +5,7 @@ import { Music, Zap, Users, Play, Headphones, Mic } from 'lucide-react';
 import { ConnectWallet, Wallet } from '@coinbase/onchainkit/wallet';
 import { Name, Avatar, Identity } from '@coinbase/onchainkit/identity';
 import { useMiniKit } from '@coinbase/onchainkit/minikit';
-import { useAuthenticate } from '@coinbase/onchainkit/minikit';
+import { useAccount } from 'wagmi';
 import { SocialFeed } from './components/SocialFeed';
 import { RemixStudio } from './components/RemixStudio';
 import { UserProfile } from './components/UserProfile';
@@ -16,7 +16,7 @@ export default function HomePage() {
   const [activeView, setActiveView] = useState<'feed' | 'studio' | 'profile'>('feed');
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const { context, setFrameReady } = useMiniKit();
-  const { user } = useAuthenticate();
+  const { address, isConnected } = useAccount();
 
   useEffect(() => {
     setFrameReady();
@@ -28,7 +28,7 @@ export default function HomePage() {
     userId: 'current-user',
     username: displayName,
     profilePictureUrl: context?.user?.pfpUrl,
-    walletAddress: user?.address,
+    walletAddress: address,
   };
 
   const handleProjectSave = (project: RemixProject) => {
@@ -36,7 +36,7 @@ export default function HomePage() {
     // In a real app, this would save to IPFS/database
   };
 
-  if (!user) {
+  if (!isConnected) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="text-center space-y-8 max-w-md">
