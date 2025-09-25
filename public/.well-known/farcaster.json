@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "RemixPlay",
+    "subtitle": "Built with Zara",
+    "description": "RemixPlay is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://784b904a5f6d44228a6482fc1f1a7542-h3qs.vercel.app",
+    "splashImageUrl": "https://784b904a5f6d44228a6482fc1f1a7542-h3qs.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://784b904a5f6d44228a6482fc1f1a7542-h3qs.vercel.app/image.png",
+    "tagline": "RemixPlay",
+    "screenshotUrls": [
+      "https://784b904a5f6d44228a6482fc1f1a7542-h3qs.vercel.app/screenshot.png",
+      "https://784b904a5f6d44228a6482fc1f1a7542-h3qs.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://784b904a5f6d44228a6482fc1f1a7542-h3qs.vercel.app/api/webhook"
+  }
+}
